@@ -7,6 +7,8 @@
 
 #include <iostream>
 #include <random>
+#include <vector>
+
 
 int main() {
     setlocale(LC_ALL, "RU");
@@ -19,21 +21,15 @@ int main() {
     std::cout << "Введите количество строк матрицы: " << std::endl;
     std::cin >> M;
 
-    int** massiv;
-    massiv = new int* [M];
+    std::vector < std::vector <int> > massiv(N, std::vector <int>(M)); //Задание вектора размерами NxM
 
-    for (int i = 0; i < N; i++) {
-        massiv[i] = new int[M];
-    }
+    //Заполнение 
 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
             massiv[i][j] = rand();
         }
     }
-
-    //Вывод массива на экран
-
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
             std::cout << " " << massiv[i][j];
@@ -55,11 +51,6 @@ int main() {
         std::cout << num << " " << Max << std::endl;
         Max = 0;
     }
-
-    for (int i = 0; i < N; i++) {
-        delete[] massiv[i];
-    }
-    delete[] massiv;
 
     return 0;
 }
